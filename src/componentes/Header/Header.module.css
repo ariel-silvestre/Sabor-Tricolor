@@ -1,0 +1,51 @@
+/* src/components/Header/Header.module.css */
+
+.header {
+  background: linear-gradient(90deg, 
+    var(--color-rojo) 0%, 
+    var(--color-amarillo) 50%, 
+    var(--color-verde) 100%
+  );
+  padding: 28px 20px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.lead {
+  margin: 6px 0 0;
+  font-size: 14px;
+  opacity: 0.95;
+  font-weight: 400;
+}
