@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sabor Tricolor</title>
+  <style>
+    :root{
+      --rojo:#c81e24; /* banderas: rojo, amarillo, verde */
+      --amarillo:#f2c500;
+      --verde:#1f8a3d;
+      --bg:#fffaf6;
+      --card:#ffffff;
+      --muted:#555;
+      --glass: rgba(255,255,255,0.7);
+      --radius:14px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#fff);color:#1b1b1b}
+
+    /* Header */
+    header{
+      padding:28px 20px;
+      background: linear-gradient(90deg,var(--rojo) 0%, var(--amarillo) 45%, var(--verde) 100%);
+      color:white;
+      border-bottom-left-radius:18px;
+      border-bottom-right-radius:18px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.12);
+    }
+    .container{max-width:1100px;margin:0 auto}
+    .brand{display:flex;align-items:center;gap:16px}
+    .logo{
+      width:60px;height:60px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.15),rgba(255,255,255,0.05));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;backdrop-filter: blur(4px)
+    }
+    h1{margin:0;font-size:28px}
+    p.lead{margin:6px 0 0;font-size:14px;opacity:0.95}
+
+    /* Search area */
+    .controls{display:flex;gap:12px;align-items:center;margin-top:18px;flex-wrap:wrap}
+    .input, .select{padding:12px 14px;border-radius:12px;border:0;box-shadow:0 2px 8px rgba(0,0,0,0.08);min-width:220px}
+    .btn{padding:12px 14px;border-radius:12px;border:0;background:var(--rojo);color:white;font-weight:600;cursor:pointer}
+    .btn.secondary{background:var(--verde)}
+
+    main{padding:28px 20px}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:22px;max-width:1100px;margin:0 auto}
+
+    /* Recipe cards */
+    .recipes{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+    .card{background:var(--card);border-radius:12px;padding:12px;box-shadow:0 6px 18px rgba(17,17,17,0.06);display:flex;flex-direction:column}
+    .thumb{height:140px;border-radius:10px;background:linear-gradient(135deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted);margin-bottom:10px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:var(--glass);border:1px solid rgba(0,0,0,0.04)}
+
+    /* Sidebar */
+    aside{position:sticky;top:20px;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.85));padding:16px;border-radius:12px;box-shadow:0 10px 22px rgba(0,0,0,0.06)}
+    aside h3{margin:0 0 12px}
+    .section-list{display:flex;flex-direction:column;gap:8px}
+    .section-item{padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);cursor:pointer}
+    .section-item.active{background:linear-gradient(90deg,var(--amarillo),var(--verde));color:#112b18;font-weight:700}
+
+    /* Footer */
+    footer{padding:18px;text-align:center;color:#444;font-size:14px}
+
+    /* Responsive */
+    @media(max-width:880px){.grid{grid-template-columns:1fr}.thumb{height:120px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">ST</div>
+        <div>
+          <h1>Sabor Tricolor</h1>
+          <p class="lead">Encuentra recetas por ingredientes — con secciones especiales: Postres, Ensaladas y Recetas Bolivianas.</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <input id="ingredients" class="input" placeholder="Escribe ingredientes separados por comas (ej.: papa, huevo, queso)" />
+        <select id="category" class="select">
+          <option value="all">Todas las secciones</option>
+          <option value="postres">Postres</option>
+          <option value="ensaladas">Ensaladas</option>
+          <option value="bolivianas">Recetas Bolivianas</option>
+        </select>
+        <button id="searchBtn" class="btn">Buscar</button>
+        <button id="clearBtn" class="btn secondary">Limpiar</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid container">
+      <section>
+        <h2>Recetas</h2>
+        <div id="results" class="recipes" aria-live="polite">
+          <!-- cards render here -->
+        </div>
+      </section>
+
+      <aside>
+        <h3>Secciones</h3>
+        <div class="section-list">
+          <div class="section-item active" data-section="all">Todas</div>
+          <div class="section-item" data-section="postres">Postres</div>
+          <div class="section-item" data-section="ensaladas">Ensaladas</div>
+          <div class="section-item" data-section="bolivianas">Recetas Bolivianas</div>
+        </div>
+
+        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(0,0,0,0.06)"/>
+        <h3>Consejo</h3>
+        <p style="margin:6px 0 0;font-size:13px;color:var(--muted)">Escribe los ingredientes que tienes y presiona Buscar. Las recetas que contengan tus ingredientes aparecerán primero.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    &copy; Sabor Tricolor — Diseño inspirado en la bandera boliviana • Hecho con cariño
+  </footer>
+
+  <script>
+    // Lista de recetas de ejemplo. Puedes ampliarla o conectarla a un servidor.
+    const RECIPES = [
+      {
+        id:1, title:'Salteñas (Boliviana)', section:'bolivianas', ingredients:['carne','cebolla','papa','masa'], time:'1h 30m', img:'Salteñas'
+      },
+      {id:2, title:'Api con pastel (Boliviana - Postre)', section:'bolivianas', ingredients:['maíz morado','azúcar','canela'], time:'40m', img:'Api'},
+      {id:3, title:'Sopa de maní (Boliviana)', section:'bolivianas', ingredients:['maní','carne','cebolla'], time:'1h', img:'Sopa de maní'},
+      {id:4, title:'Ensalada de quinoa y aguacate', section:'ensaladas', ingredients:['quinoa','aguacate','tomate','limón'], time:'20m', img:'Quinoa'},
+      {id:5, title:'Ensalada de palta y maí', section:'ensaladas', ingredients:['aguacate','maí','cebolla morada'], time:'15m', img:'Ensalada'},
+      {id:6, title:'Helado de canela (casero)', section:'postres', ingredients:['leche','azúcar','canela'], time:'3h', img:'Helado'},
+      {id:7, title:'Suspiros (Postre boliviano)', section:'postres', ingredients:['leche','azúcar','dulce de leche'], time:'2h', img:'Suspiros'},
+      {id:8, title:'Tortilla de papa', section:'bolivianas', ingredients:['papa','huevo','cebolla'], time:'30m', img:'Tortilla'},
+      {id:9, title:'Mazamorra de maí', section:'postres', ingredients:['maí','azúcar','canela'], time:'50m', img:'Mazamorra'},
+      {id:10, title:'Ensalada criolla', section:'ensaladas', ingredients:['cebolla','tomate','ají','limón'], time:'10m', img:'Criolla'}
+    ];
+
+    const resultsEl = document.getElementById('results');
+    const ingredientsInput = document.getElementById('ingredients');
+    const categorySelect = document.getElementById('category');
+    const searchBtn = document.getElementById('searchBtn');
+    const clearBtn = document.getElementById('clearBtn');
+
+    function renderCards(recipes){
+      resultsEl.innerHTML = '';
+      if(!recipes.length){
+        resultsEl.innerHTML = '<p style="grid-column:1/-1;color:var(--muted)">No se encontraron recetas. Intenta con otros ingredientes o selecciona otra sección.</p>';
+        return;
+      }
+      recipes.forEach(r=>{
+        const card = document.createElement('article');
+        card.className='card';
+        card.innerHTML = `
+          <div class="thumb">${escapeHtml(r.img)}</div>
+          <h4>${escapeHtml(r.title)}</h4>
+          <div style="font-size:13px;color:var(--muted);margin-top:6px">Tiempo: ${escapeHtml(r.time)}</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:8px">Ingredientes: ${r.ingredients.join(', ')}</div>
+          <div class="tags">
+            <div class="tag">${r.section}</div>
+          </div>
+        `;
+        resultsEl.appendChild(card);
+      })
+    }
+
+    function normalizeArray(arr){
+      return arr.map(s=>s.trim().toLowerCase()).filter(Boolean);
+    }
+
+    function escapeHtml(text){
+      return String(text).replace(/[&<>"']/g, function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]});
+    }
+
+    function search(){
+      const raw = ingredientsInput.value;
+      const category = categorySelect.value;
+      const wanted = normalizeArray(raw.split(','));
+
+      // Ranking: recipes that contain the most of the wanted ingredients appear first.
+      let filtered = RECIPES.filter(r=>{
+        if(category !== 'all' && r.section !== category) return false;
+        return true;
+      }).map(r=>{
+        const ing = normalizeArray(r.ingredients);
+        const matched = wanted.filter(w=>ing.some(i=>i.includes(w) || w.includes(i)));
+        return {...r, score: matched.length};
+      });
+
+      // If user specified ingredients, sort by score desc, else keep original order but filtered by category
+      if(wanted.length && wanted.some(Boolean)){
+        filtered = filtered.filter(r=>r.score>0).sort((a,b)=>b.score-a.score);
+      }
+
+      renderCards(filtered);
+    }
+
+    // Section buttons
+    document.querySelectorAll('.section-item').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        document.querySelectorAll('.section-item').forEach(x=>x.classList.remove('active'));
+        el.classList.add('active');
+        const s = el.dataset.section;
+        categorySelect.value = s === 'all' ? 'all' : s;
+        search();
+      })
+    })
+
+    searchBtn.addEventListener('click', search);
+    clearBtn.addEventListener('click', ()=>{ingredientsInput.value='';categorySelect.value='all';document.querySelectorAll('.section-item').forEach(x=>x.classList.remove('active'));document.querySelector('.section-item[data-section="all"]').classList.add('active');search();});
+
+    // render initial
+    renderCards(RECIPES);
+  </script>
+</body>
+</html>
