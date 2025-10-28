@@ -1,0 +1,278 @@
+{
+  "version": "1.0.0",
+  "ultima_actualizacion": "2025-11-15",
+  "total_recetas": 150,
+  "recetas": [
+    {
+      "id": "rec_001",
+      "nombre": "Salteña Cochabambina",
+      "slug": "saltena-cochabambina",
+      "descripcion": "Empanada jugosa rellena de carne, papa y salsa especial",
+      "descripcion_larga": "La salteña es el símbolo del desayuno cochabambino...",
+      
+      "tags": {
+        "regiones": ["Cochabamba"],
+        "tipos": ["Aperitivo", "Entrada"],
+        "proteinas": ["Carne de Res", "Pollo"],
+        "metodos": ["Horneado"],
+        "momentos": ["Desayuno", "Media mañana"],
+        "caracteristicas": ["Típico", "Festivo", "Caliente"],
+        "dificultad": "Intermedio",
+        "ocasiones": ["Diario", "Domingo"]
+      },
+      
+      "ingredientes": [
+        {
+          "nombre": "carne de res",
+          "cantidad": "500",
+          "unidad": "g",
+          "opcional": false,
+          "sinonimos": ["carne", "res"]
+        },
+        {
+          "nombre": "papa",
+          "cantidad": "3",
+          "unidad": "unidades",
+          "opcional": false,
+          "sinonimos": ["patata", "ch'uqi", "chuqi"]
+        },
+        {
+          "nombre": "cebolla",
+          "cantidad": "2",
+          "unidad": "unidades",
+          "opcional": false,
+          "sinonimos": ["sebolla", "siwilla"]
+        },
+        {
+          "nombre": "ají amarillo",
+          "cantidad": "3",
+          "unidad": "cucharadas",
+          "opcional": false,
+          "sinonimos": ["ají", "chile amarillo"]
+        }
+      ],
+      
+      "preparacion": [
+        {
+          "paso": 1,
+          "titulo": "Preparar el relleno",
+          "instruccion": "Cocinar la carne con cebolla, ají y especias hasta que esté tierna",
+          "tiempo_estimado": 20,
+          "consejos": ["No dejar secar mucho la carne", "El jugo debe ser abundante"]
+        },
+        {
+          "paso": 2,
+          "titulo": "Preparar la masa",
+          "instruccion": "Mezclar harina, manteca y agua hasta obtener masa homogénea",
+          "tiempo_estimado": 15,
+          "consejos": ["La masa debe quedar elástica", "Dejar reposar 30 minutos"]
+        },
+        {
+          "paso": 3,
+          "titulo": "Armar las salteñas",
+          "instruccion": "Rellenar círculos de masa con el preparado y sellar en forma de repulgue",
+          "tiempo_estimado": 30,
+          "consejos": ["No llenar demasiado", "Sellar bien los bordes"]
+        },
+        {
+          "paso": 4,
+          "titulo": "Hornear",
+          "instruccion": "Hornear a 180°C durante 25-30 minutos hasta dorar",
+          "tiempo_estimado": 30,
+          "consejos": ["Pincelar con huevo antes de hornear"]
+        }
+      ],
+      
+      "informacion": {
+        "tiempo_preparacion": 45,
+        "tiempo_coccion": 30,
+        "tiempo_total": 90,
+        "porciones": 12,
+        "costo_aproximado": "medio",
+        "nivel_dificultad": "intermedio"
+      },
+      
+      "nutricion": {
+        "calorias": 320,
+        "proteinas": 15,
+        "carbohidratos": 35,
+        "grasas": 12,
+        "fibra": 2,
+        "sodio": 450
+      },
+      
+      "multimedia": {
+        "imagen_principal": "images/saltena-cochabambina-main.jpg",
+        "imagenes_pasos": [
+          "images/saltena-paso1.jpg",
+          "images/saltena-paso2.jpg"
+        ],
+        "video_url": null,
+        "fuente_receta": "Recetario tradicional de Cochabamba"
+      },
+      
+      "metadata": {
+        "fecha_creacion": "2025-10-01",
+        "fecha_modificacion": "2025-11-15",
+        "autor": "Sabor Tricolor",
+        "verificada": true,
+        "popularidad": 95,
+        "valoracion_promedio": 4.8,
+        "numero_valoraciones": 247
+      },
+      
+      "variantes": [
+        {
+          "nombre": "Salteña de pollo",
+          "cambios": "Sustituir carne de res por pollo desmenuzado"
+        },
+        {
+          "nombre": "Salteña vegetariana",
+          "cambios": "Usar lentejas o soya texturizada en lugar de carne"
+        }
+      ],
+      
+      "consejos_adicionales": [
+        "Las salteñas se comen mejor recién horneadas",
+        "Tradicionalmente se acompañan con llajwa",
+        "Se pueden congelar crudas y hornear directamente"
+      ],
+      
+      "historia": "La salteña tiene origen en Argentina pero fue adaptada en Cochabamba con su característico jugo abundante..."
+    },
+    
+    {
+      "id": "rec_002",
+      "nombre": "Pique Macho",
+      "slug": "pique-macho",
+      "descripcion": "Plato abundante de carne, salchicha y papas fritas",
+      
+      "tags": {
+        "regiones": ["Cochabamba"],
+        "tipos": ["Plato Principal"],
+        "proteinas": ["Carne de Res"],
+        "metodos": ["Frito", "Parrilla"],
+        "momentos": ["Almuerzo", "Cena"],
+        "caracteristicas": ["Picante", "Típico", "Caliente", "Abundante"],
+        "dificultad": "Fácil",
+        "ocasiones": ["Diario", "Reunión familiar"]
+      },
+      
+      "ingredientes": [
+        {
+          "nombre": "carne de res",
+          "cantidad": "500",
+          "unidad": "g",
+          "opcional": false,
+          "sinonimos": ["carne", "res", "lomo"]
+        },
+        {
+          "nombre": "salchicha",
+          "cantidad": "4",
+          "unidad": "unidades",
+          "opcional": false,
+          "sinonimos": ["vienesa", "hot dog"]
+        },
+        {
+          "nombre": "papa",
+          "cantidad": "4",
+          "unidad": "unidades",
+          "opcional": false,
+          "sinonimos": ["patata", "ch'uqi"]
+        },
+        {
+          "nombre": "tomate",
+          "cantidad": "2",
+          "unidad": "unidades",
+          "opcional": false,
+          "sinonimos": ["jitomate"]
+        },
+        {
+          "nombre": "cebolla",
+          "cantidad": "1",
+          "unidad": "unidad",
+          "opcional": false,
+          "sinonimos": ["sebolla"]
+        },
+        {
+          "nombre": "locoto",
+          "cantidad": "2",
+          "unidad": "unidades",
+          "opcional": true,
+          "sinonimos": ["ají picante", "chile picante", "uchu"]
+        }
+      ],
+      
+      "preparacion": [
+        {
+          "paso": 1,
+          "titulo": "Preparar ingredientes",
+          "instruccion": "Cortar carne en tiras, papa en bastones, freír papas hasta dorar",
+          "tiempo_estimado": 15
+        },
+        {
+          "paso": 2,
+          "titulo": "Cocinar carne",
+          "instruccion": "Saltear carne y salchicha hasta dorar, agregar cebolla y tomate",
+          "tiempo_estimado": 15
+        },
+        {
+          "paso": 3,
+          "titulo": "Armar el plato",
+          "instruccion": "Servir papas fritas, cubrir con mezcla de carne, decorar con huevo duro y locoto",
+          "tiempo_estimado": 10
+        }
+      ],
+      
+      "informacion": {
+        "tiempo_preparacion": 15,
+        "tiempo_coccion": 25,
+        "tiempo_total": 40,
+        "porciones": 4,
+        "costo_aproximado": "medio-alto",
+        "nivel_dificultad": "fácil"
+      },
+      
+      "nutricion": {
+        "calorias": 780,
+        "proteinas": 45,
+        "carbohidratos": 55,
+        "grasas": 38,
+        "fibra": 5,
+        "sodio": 890
+      },
+      
+      "multimedia": {
+        "imagen_principal": "images/pique-macho-main.jpg",
+        "imagenes_pasos": [],
+        "video_url": null,
+        "fuente_receta": "Recetario tradicional de Cochabamba"
+      },
+      
+      "metadata": {
+        "fecha_creacion": "2025-10-01",
+        "fecha_modificacion": "2025-10-01",
+        "autor": "Sabor Tricolor",
+        "verificada": true,
+        "popularidad": 92,
+        "valoracion_promedio": 4.7,
+        "numero_valoraciones": 189
+      },
+      
+      "variantes": [
+        {
+          "nombre": "Pique a lo Macho Light",
+          "cambios": "Usar papas al horno en lugar de fritas, menos aceite"
+        }
+      ],
+      
+      "consejos_adicionales": [
+        "El nombre viene de 'pique' (mezcla) y 'macho' (abundante)",
+        "Tradicionalmente muy picante, ajustar locoto al gusto",
+        "Se sirve en fuente grande para compartir"
+      ],
+      
+      "historia": "Creado en Cochabamba en los años 70, se popularizó como plato para reuniones..."
+    }
+  ]
+}
