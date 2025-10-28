@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Header from './componentes/Header/Header';
 import SearchBar from './componentes/SearchBar/SearchBar';
 import RecipeList from './componentes/RecipeList/RecipeList';
@@ -11,6 +11,8 @@ const App: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   
+  const resultRef = useRef<HTMLDivElement>(null);
+
   const handleSearch = (): void => {
     if (!searchIngredients.trim()) return;
 
@@ -36,6 +38,15 @@ const App: React.FC = () => {
 
       console.log(`Encontrados ${results.length} recetas`);
       setRecipes(results);
+
+      // Scroll a resultados despues de un pequeño delay
+      setTimeout(() => {
+        resultRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    
     } catch (error) {
       console.error('Error al buscar recetas: ', error);
       setRecipes([]);
@@ -66,11 +77,14 @@ const App: React.FC = () => {
         disabled={isLoading}
       />
 
-      {isLoading &&(
-        <div className='loading'>
-          <p>🔍 Buscando recetas...</p>
-        </div>
-      )}
+      {/* Agregar ref al contenedor de resultados */}
+      <div ref={resultRef}>
+        {isLoading &&(
+          <div className='loading'>
+            <p>🔍 Buscando recetas...</p>
+          </div>
+        )}
+      </div>
 
       {!isLoading && recipes.length > 0 && (
         <RecipeList recipes={recipes} />
