@@ -3,3 +3,37 @@
   --color-amarillo: #f2c500;
   --color-verde: #1f8a3d;
 }
+
+.loading, .no-results {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px 20px;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.loading p {
+  font-size: 20px;
+  color: #1f8a3d;
+  font-weight: 600;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.no-results p {
+  font-size: 18px;
+  color: #666;
+  margin: 8px 0;
+}
+
+.no-results p:first-child {
+  font-size: 22px;
+  font-weight: 700;
+  color: #c81e24;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
